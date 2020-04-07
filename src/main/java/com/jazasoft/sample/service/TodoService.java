@@ -1,52 +1,20 @@
 package com.jazasoft.sample.service;
 
 import com.jazasoft.sample.entity.Todo;
-import org.springframework.stereotype.Service;
 
 import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
 
-@Service
-public class TodoService {
-  private Map<Long, Todo> todoCache = new HashMap<>();
-  long counter = 0;
+public interface TodoService {
 
-  public TodoService() {
-    Todo todo1 = new Todo(1L, "Go to Shopping");
-    Todo todo2 = new Todo(2L, "Watch Movie");
+  Collection<Todo> findAll();
 
-    todoCache.put(todo1.getId(), todo1);
-    todoCache.put(todo2.getId(), todo2);
+  Todo findOne(Long id);
 
-    counter = 3;
-  }
+  Todo save(Todo todo);
 
-  public Collection<Todo> findAll() {
-    return todoCache.values();
-  }
+  Todo update(Todo todo);
 
-  public Todo findOne(Long id) {
-    return todoCache.get(id);
-  }
+  void delete(Long id);
 
-  public Todo save(Todo todo) {
-    todo.setId(counter++);
-    todoCache.put(todo.getId(), todo);
-    return todo;
-  }
-
-  public Todo update(Todo todo) {
-    Todo mTodo = todoCache.get(todo.getId());
-    mTodo.setName(todo.getName());
-    return mTodo;
-  }
-
-  public void delete(Long id) {
-    todoCache.remove(id);
-  }
-
-  public boolean exists(Long id) {
-    return todoCache.containsKey(id);
-  }
+  boolean exists(Long id);
 }
