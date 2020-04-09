@@ -3,12 +3,13 @@ package com.jazasoft.sample.service;
 import com.jazasoft.sample.entity.Todo;
 
 import java.util.Collection;
+import java.util.Optional;
 
 public interface TodoService {
 
   Collection<Todo> findAll();
 
-  Todo findOne(Long id);
+  Optional<Todo> findOne(Long id);
 
   Todo save(Todo todo);
 

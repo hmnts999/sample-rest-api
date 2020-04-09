@@ -20,7 +20,6 @@ public class TodoRestController {
   @GetMapping
   public ResponseEntity<?> findAll() {
     Collection<Todo> todos = todoService.findAll();
-//    return new ResponseEntity<>(todos, HttpStatus.OK);
     return ResponseEntity.ok(todos);
   }
 

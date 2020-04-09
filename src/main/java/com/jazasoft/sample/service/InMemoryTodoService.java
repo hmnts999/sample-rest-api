@@ -1,11 +1,11 @@
 package com.jazasoft.sample.service;
 
 import com.jazasoft.sample.entity.Todo;
-import org.springframework.stereotype.Service;
 
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 //@Service
 public class InMemoryTodoService implements TodoService {
@@ -28,7 +28,7 @@ public class InMemoryTodoService implements TodoService {
   }
 
   @Override
-  public Todo findOne(Long id) {
+  public Optional<Todo> findOne(Long id) {
     return todoCache.get(id);
   }
 
